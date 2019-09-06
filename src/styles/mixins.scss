@@ -1,0 +1,198 @@
+// CORES _ GLOBAL
+// Rosa -> design e destaque
+$mainRosa: #DC367F;
+$mainDark: #A50249;
+$mainLighter: #EE84B3;
+// Roxo - botões e bordas
+$mainRoxo: #683AB7;
+$purpleDark: #3A0E85;
+$purpleLighter: #A484DD;
+// Azul - links;
+$mainAzul: #327DAD;
+$blueDark: #094F7D;
+$blueLighter: #7EB5D8;
+// WRAPPER 
+$wrapper: 1150px;
+// Mixins e Keyframes(para usar, include)
+@mixin bp-large {
+    @media only screen and (max-width: 60em) {
+        @content;
+    }
+}
+@mixin bp-medium {
+    @media only screen and (max-width: 40em) {
+        @content;
+    }
+}
+@mixin bp-small {
+    @media only screen and (max-width: 30em) {
+        @content;
+    }
+}
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+@mixin animation($str) {
+    -webkit-animation: #{$str};
+    -moz-animation: #{$str};
+    -ms-animation: #{$str};
+    -o-animation: #{$str};
+    animation: #{$str};
+}
+@mixin background($arg) {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url($arg);
+}
+@keyframes sobeDesce {
+        0% {transform:scale(1.1);}
+        100% {transform:scale(1);}
+}
+
+@mixin value($per) {
+    width: $per;
+    max-width: 100%;
+    min-width: 0%;
+}
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+@mixin filter($args...) {
+    -webkit-filter: $args;
+    -moz-filter: $args;
+    -ms-filter: $args;
+    -o-filter: $args;
+    filter: $args;
+}
+@mixin transform($args...) {
+    -webkit-transform: $args;
+    -moz-transform: $args;
+    -ms-transform: $args;
+    -o-transform: $args;
+    transform: $args;
+}
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        @content;
+    }
+
+    &:-moz-placeholder { /* Firefox 18- */
+        @content;
+    }
+
+    &::-moz-placeholder {  /* Firefox 19+ */
+        @content;
+    }
+
+    &:-ms-input-placeholder {
+        @content;
+    }
+}
+@include keyframes(progress) {
+    0% {
+        width: 0
+    }
+    100% {
+        width: 100%
+    }
+}
+@include keyframes(lozenge) {
+    0% {
+        @include transform(rotate(45deg));
+    }
+    100% {
+        @include transform(rotate(230deg));
+    }
+}
+@include keyframes(appears) {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 999; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: $mainDark;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
