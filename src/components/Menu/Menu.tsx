@@ -13,8 +13,8 @@ export default class Menu extends React.Component<{},{}> {
     ];
 
     buildMenu(){
-        return this.MENU_ITEMS.map( (itemProp: IPropItemList)=>{
-            return <ItemList label={itemProp.label} link={itemProp.link} external={itemProp.external} ></ItemList>
+        return this.MENU_ITEMS.map( (itemProp: IPropItemList, i:number)=>{
+            return <ItemList key={i} label={itemProp.label} link={itemProp.link} external={itemProp.external} ></ItemList>
         });
     }
   
