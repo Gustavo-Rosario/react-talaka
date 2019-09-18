@@ -7,3 +7,11 @@ export interface IPropItemList{
     link?: string
     external?: Boolean
 }
+
+export interface IPropImage{
+    path: string,
+    alt?: string,
+    description?: string,
+    className?: string,
+    imgClass?: string
+}

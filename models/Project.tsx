@@ -10,7 +10,7 @@ export class Project{
         collected: Number;
     }
     image?: {
-        main: String,
-        background: String
+        main: string,
+        background: string
     }
 }

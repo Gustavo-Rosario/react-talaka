@@ -1,6 +1,7 @@
 import * as React from 'react';
-import ItemList from '../../utils/ItemList';
-import { Project } from '../../../../models/Project';
+import ItemList from '../../components/utils/ItemList';
+import { Project } from '../../../models/Project';
+import Image from '../../components/utils/Image';
 
 export default class Carousel extends React.Component<{},{}>{
   
@@ -15,9 +16,16 @@ export default class Carousel extends React.Component<{},{}>{
                 elit ac lobortis. Donec ullamcorper velit a sapien 
                 accumsan, at condimentum tortor cursus. Lorem ipsum
                 dolor sit amet, consectetur adipiscing elit.`,
+            image: {
+                background: 'http://localhost:8080/public/projects/dragonBall/bg.jpg',
+                main: 'http://localhost:8080/public/projects/dragonBall/main.jpg'
+            },
             creator: {
                 name: 'Gustavo Rosário',
-                username: 'gmastersupreme'
+                username: 'gmastersupreme',
+                image: {
+                    profile: 'http://localhost:8080/public/users/gus.jpeg'
+                }
             },
             bag: {
                 meta: 2000.00,
@@ -33,10 +41,10 @@ export default class Carousel extends React.Component<{},{}>{
             return (
                 <div key={i} className="eachCarousel carOff atual">
                     {/* BACKGROUND */}
-                    <div className="eachCarouselCover"></div>
+                    <Image className="eachCarouselCover" path={crsl.image.background}/>
                     <div className="wrapper">
                         <div className="carouselLeft">
-                            <div className="headerProjectCover"></div>
+                            <Image className="headerProjectCover" path={crsl.image.main}/>
                             {/* <a href=""> <i className="fa fa-heart-o" aria-hidden="true"></i> Conheça o projeto </a> */}
                         </div>
                         <div className="carouselRight">
@@ -56,7 +64,8 @@ export default class Carousel extends React.Component<{},{}>{
                                 <h2> Autores</h2>
                                 <ul>
                                     <a href="/perfil/<?= $crsl->creator->username;?>">
-                                        <li data-title="<?= $crsl->creator->name; ?>" >
+                                        <li data-title={crsl.creator.name} >
+                                            <Image path={crsl.creator.image.profile} />
                                             <i className="fa fa-star" aria-hidden="true"></i>
                                         </li>
                                     </a>
@@ -75,7 +84,7 @@ export default class Carousel extends React.Component<{},{}>{
                 <div id="carousel">
                     <div id="carouselWrapper">
 
-                        <div className="eachCarousel carOff" id="helloWrapper">
+                        {/* <div className="eachCarousel carOff" id="helloWrapper"> 
                             <div className="wrapper">
                                 <div id="logo"></div>
                                 <p>Conheça a plataforma de financiamento coletivo de quadrinhos nacionais</p>
@@ -84,7 +93,7 @@ export default class Carousel extends React.Component<{},{}>{
                                     <ItemList key={2} label="O que é financiamento coletivo?" link="#howItWorks" external={true} />
                                 </ul>
                             </div>
-                        </div>
+                        </div>*/}
                         
                         { this.buildProjectCarousel() }
 

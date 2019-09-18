@@ -1,6 +1,6 @@
 import * as React from 'react';
-import HeaderPage from '../../Header/Header';
-import Menu from '../../Menu/Menu';
+import HeaderPage from '../../components/Header/Header';
+import Menu from '../../components/Menu/Menu';
 import Carousel from './Carousel';
 
 export default class Home extends React.Component<{},{}>{
