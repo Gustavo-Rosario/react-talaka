@@ -358,8 +358,14 @@ nav {
                     font-weight: 600;
                 }
                 .authors {
-                    position: absolute;
-                    bottom: 0;
+                    margin-left: 8px;
+                    h2 {
+                        font-weight: bold;
+                    }
+                    .autorImg{
+                        width: 82px;
+                        height: 82px;
+                    }
                 }
                 h2 {
                     font-size: 2rem;
@@ -371,13 +377,13 @@ nav {
                     display: flex;
                 }
                 li {
-                    
-                    width: 35px;
-                    height: 35px;
+                    position: relative;
+                    width: 82px;
+                    height: 82px;
                     
                     figure img{
                         border-radius: 50%;
-                        border: 2px solid #fff;
+                        border: 4px solid rgba(189, 189, 189,.5);
                         cursor: pointer;
                         @include transition(.3s);
                         flex-direction: row;
@@ -389,7 +395,7 @@ nav {
                         object-fit: cover;
 
                         &:hover {
-                            border: 2px solid $blueLighter;
+                            border: 4px solid $blueLighter;
                         }
                     }
                     
@@ -404,7 +410,6 @@ nav {
                 .projectInfos {
                     margin-top: 1.2rem;
                     width: 100%;
-                    height: 50%;
                     display: grid;
                     grid-template-columns: 1fr 4fr;
                     // background-color: rgba(255, 255, 255, .3);
@@ -464,12 +469,15 @@ nav {
         height: 1%;
         position: relative;
         bottom: 0;
-        #progress {
+        .progress {
             position: relative;
             width: 10%;
             height: 100%;
             background-color: $blueLighter;
-            @include animation('progress 5s infinite');
+        }
+        .animationProgress{
+            $animationText: "progress #{$seconds} infinite";
+            @include animation($animationText);
         }
     }
     #helloWrapper {

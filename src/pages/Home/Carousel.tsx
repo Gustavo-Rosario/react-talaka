@@ -5,6 +5,9 @@ import Image from '../../components/utils/Image';
 import { IStateCarousel } from '../../interface';
 import ProgressCircle from '../../components/utils/ProgressRing';
 import ProgressRing from '../../components/utils/ProgressRing';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { relative } from 'path';
 
 export default class Carousel extends React.Component<{},IStateCarousel>{
   
@@ -23,10 +26,10 @@ export default class Carousel extends React.Component<{},IStateCarousel>{
                 main: 'http://localhost:8080/public/projects/saintiaSho/main.jpg'
             },
             creator: {
-                name: 'Stephany Tenório',
-                username: 'terezasublime',
+                name: 'Mikasa',
+                username: 'mikasa',
                 image: {
-                    profile: 'http://localhost:8080/public/users/gus.jpeg'
+                    profile: 'http://localhost:8080/public/users/mikasa.jpg'
                 }
             },
             bag: {
@@ -73,15 +76,41 @@ export default class Carousel extends React.Component<{},IStateCarousel>{
                 main: 'http://localhost:8080/public/projects/bokuNoHero/main.jpg'
             },
             creator: {
-                name: 'Gustavo Rosário',
-                username: 'gmastersupreme',
+                name: 'Nadine Wegas',
+                username: 'nadinewegas',
                 image: {
-                    profile: 'http://localhost:8080/public/users/gus.jpeg'
+                    profile: 'http://localhost:8080/public/users/nadine.jpg'
                 }
             },
             bag: {
                 meta: 2000.00,
                 collected: 500.00
+            }
+        },
+        {
+            title: 'Ashe: Mãe Guerreira edição especial #01',
+            description: `Criada nas florestas selvagens do norte, 
+                Ashe é uma glacinata, uma guerreira dotada de uma 
+                conexão mágica com sua terra congelada – e sobrecarregada 
+                pelas expectativas fanáticas de sua mãe. Quando 
+                eles partem em uma perigosa busca pela verdade por 
+                trás de um mito antigo, os laços são quebrados, 
+                os segredos vêm à luz e Runeterra é mudada para 
+                sempre.`,
+            image: {
+                background: 'http://localhost:8080/public/projects/lol/bg.jpg',
+                main: 'http://localhost:8080/public/projects/lol/main.jpeg'
+            },
+            creator: {
+                name: 'Stephany Tenório',
+                username: 'stebani',
+                image: {
+                    profile: 'http://localhost:8080/public/users/ste.jpg'
+                }
+            },
+            bag: {
+                meta: 12000.00,
+                collected: 9345.00
             }
         }
     ];
@@ -152,12 +181,12 @@ export default class Carousel extends React.Component<{},IStateCarousel>{
                             </div>
 
                             <div className="authors">
-                                <h2> Autores</h2>
+                                <h2>Autores</h2>
                                 <ul>
-                                    <a href="/perfil/<?= $crsl->creator->username;?>">
+                                    <a href="/perfil">
                                         <li data-title={crsl.creator.name} >
-                                            <Image path={crsl.creator.image.profile} />
-                                            <i className="fa fa-star" aria-hidden="true"></i>
+                                            <Image className="autorImg" path={crsl.creator.image.profile} />
+                                            <FontAwesomeIcon icon={faStar} style={{ color: "yellow", fontSize: 20, position: "absolute", right: 0 }} />
                                         </li>
                                     </a>
                                 </ul>
@@ -186,6 +215,11 @@ export default class Carousel extends React.Component<{},IStateCarousel>{
         let intervalId = global.setInterval(this.spinCarousel, this.MILISECONDS_TIMER);
         // store intervalId in the state so it can be accessed later:
         this.setState({spinCarouselInterval: intervalId});
+        // not gonna work
+        document.querySelector("#carouselTimer #progressControl").classList.remove("animationProgress");
+        global.setTimeout(()=>{
+            document.querySelector("#carouselTimer #progressControl").classList.add("animationProgress");
+        },1);
     }
 
     render(){
@@ -204,8 +238,9 @@ export default class Carousel extends React.Component<{},IStateCarousel>{
                         </ul>
                     </div>
                     {/* TIMER */}
+
                     <div id="carouselTimer">
-                        <div id="progress"></div>
+                        <div id="progressControl" className="progress animationProgress"></div>
                     </div>
                 </div>
             </>

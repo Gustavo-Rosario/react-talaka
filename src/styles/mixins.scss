@@ -13,6 +13,9 @@ $blueDark: #094F7D;
 $blueLighter: #7EB5D8;
 // WRAPPER 
 $wrapper: 1150px;
+
+// =========== CONFIG CAROUSEL =============
+$seconds: 5s;
 // Mixins e Keyframes(para usar, include)
 @mixin bp-large {
     @media only screen and (max-width: 60em) {
