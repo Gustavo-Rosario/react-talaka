@@ -15,3 +15,16 @@ export interface IPropImage{
     className?: string,
     imgClass?: string
 }
+
+export interface IPropProgressRing{
+    radius: number,
+    stroke: number,
+    progress: number,
+    color?: string,
+    inline?: boolean
+}
+
+export interface IStateCarousel{
+    actualCarousel: number, 
+    spinCarouselInterval?: NodeJS.Timeout
+}

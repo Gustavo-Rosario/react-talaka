@@ -6,8 +6,8 @@ export class Project{
     creator: User;
     coauthor?: [User]
     bag: {
-        meta: Number;
-        collected: Number;
+        meta: number;
+        collected: number;
     }
     image?: {
         main: string,

@@ -3,10 +3,29 @@
     <head>
     <meta charset="UTF-8"> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
         <title>TALAKA</title> 
     </head> 
-    <body> 
+    <body>
+        <!-- FILTERS TO SVG -->
+        <div style="position: absolute;">
+            <svg>
+                <filter id="dropshadow" height="130%" stroke="green">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="4" /> 
+                    <feOffset dx="0" dy="0" result="offsetblur"/>
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="1.7"/>
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </svg>
+        </div>
         <div id="root"> 
 
         </div>

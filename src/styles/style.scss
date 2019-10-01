@@ -297,7 +297,11 @@ nav {
         height: 100%;
         position: relative;
         float: left;
-        display: flex;
+        display: none;
+        &.actual{
+            display: flex;
+        }
+
         .wrapper {
             justify-content: center;
             position: relative;
@@ -401,6 +405,8 @@ nav {
                     margin-top: 1.2rem;
                     width: 100%;
                     height: 50%;
+                    display: grid;
+                    grid-template-columns: 1fr 4fr;
                     // background-color: rgba(255, 255, 255, .3);
                     p {
                         font-size: 1.8em;
@@ -432,15 +438,23 @@ nav {
             display: block;
             width: 100%;
             background-color: $mainLighter;
-            display: flex
+            display: flex;
         }
         li {
+            flex-grow: 1;
             height: 85%;
-            width: 20%;
             position: relative;
             cursor: pointer;
             border: 1px solid #fff;
         }
+
+        .positionControl{
+            transition: .5s;
+            &:hover {
+                background-color: $mainDark
+            }
+        }
+
         .selected {
             background-color: $mainRoxo;
         }
@@ -4198,4 +4212,20 @@ fieldset{
     background: -webkit-linear-gradient(left, rgba(104, 58, 183, 0.3) 0%, rgba(220, 54, 127, 0.3) 100%);
     background: linear-gradient(to right, rgba(104, 58, 183, 0.3) 0%, rgba(220, 54, 127, 0.3) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80683ab7', endColorstr='#80dc367f',GradientType=1 );
+}
+
+// PROGRESS CIRCLE BAR
+circle {
+    transition: stroke-dashoffset 0.35s;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+.ring {
+    .inline {
+        display: inline;
+    }
+    .block {
+
+    }
 }
