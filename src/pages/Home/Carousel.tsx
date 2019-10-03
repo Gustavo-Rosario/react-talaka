@@ -8,125 +8,23 @@ import ProgressRing from '../../components/utils/ProgressRing';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { relative } from 'path';
+import ProjectFactory from '../../services/ProjectFactory';
 
 export default class Carousel extends React.Component<{},IStateCarousel>{
-  
-    
-    PROJECT_CAROUSEL: Array<Project> = [
-        {
-            title: 'Saintia Shô',
-            description: `Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Fusce non nunc nunc. Cras fringilla
-                rhoncus ultrices. Proin convallis arcu sollicitudin,
-                pretium arcu eget, venenatis diam. Mauris molestie vel
-                elit ac lobortis. Donec ullamcorper velit a sapien 
-                accumsan, at condimentum tortor cursus.`,
-            image: {
-                background: 'http://localhost:8080/public/projects/saintiaSho/bg.jpg',
-                main: 'http://localhost:8080/public/projects/saintiaSho/main.jpg'
-            },
-            creator: {
-                name: 'Mikasa',
-                username: 'mikasa',
-                image: {
-                    profile: 'http://localhost:8080/public/users/mikasa.jpg'
-                }
-            },
-            bag: {
-                meta: 3000.00,
-                collected: 730.00
-            }
-        },
-        {
-            title: 'Dragon Ball Super',
-            description: `Nam ultrices pretium purus, quis convallis 
-                ligula suscipit ac. Pellentesque vehicula nulla sit 
-                amet tincidunt blandit. Integer scelerisque eros a 
-                quam convallis faucibus. Integer rutrum nunc est. 
-                Praesent sed sapien sed dui ultrices tempor. Aliquam 
-                malesuada ultrices elit non dapibus. Praesent lacus 
-                elit, congue sit amet sodales vel, viverra vel lectus.`,
-            image: {
-                background: 'http://localhost:8080/public/projects/dragonBall/bg.jpg',
-                main: 'http://localhost:8080/public/projects/dragonBall/main.jpg'
-            },
-            creator: {
-                name: 'Gustavo Rosário',
-                username: 'gmastersupreme',
-                image: {
-                    profile: 'http://localhost:8080/public/users/gus.jpeg'
-                }
-            },
-            bag: {
-                meta: 2000.00,
-                collected: 1500.00
-            }
-        },
-        {
-            title: 'Boku no Hero',
-            description: `Nam ultrices pretium purus, quis convallis 
-                ligula suscipit ac. Pellentesque vehicula nulla sit 
-                amet tincidunt blandit. Integer scelerisque eros a 
-                quam convallis faucibus. Integer rutrum nunc est. 
-                Praesent sed sapien sed dui ultrices tempor. Aliquam 
-                malesuada ultrices elit non dapibus. Praesent lacus 
-                elit, congue sit amet sodales vel, viverra vel lectus.`,
-            image: {
-                background: 'http://localhost:8080/public/projects/bokuNoHero/bg.jpg',
-                main: 'http://localhost:8080/public/projects/bokuNoHero/main.jpg'
-            },
-            creator: {
-                name: 'Nadine Wegas',
-                username: 'nadinewegas',
-                image: {
-                    profile: 'http://localhost:8080/public/users/nadine.jpg'
-                }
-            },
-            bag: {
-                meta: 2000.00,
-                collected: 500.00
-            }
-        },
-        {
-            title: 'Ashe: Mãe Guerreira edição especial #01',
-            description: `Criada nas florestas selvagens do norte, 
-                Ashe é uma glacinata, uma guerreira dotada de uma 
-                conexão mágica com sua terra congelada – e sobrecarregada 
-                pelas expectativas fanáticas de sua mãe. Quando 
-                eles partem em uma perigosa busca pela verdade por 
-                trás de um mito antigo, os laços são quebrados, 
-                os segredos vêm à luz e Runeterra é mudada para 
-                sempre.`,
-            image: {
-                background: 'http://localhost:8080/public/projects/lol/bg.jpg',
-                main: 'http://localhost:8080/public/projects/lol/main.jpeg'
-            },
-            creator: {
-                name: 'Stephany Tenório',
-                username: 'stebani',
-                image: {
-                    profile: 'http://localhost:8080/public/users/ste.jpg'
-                }
-            },
-            bag: {
-                meta: 12000.00,
-                collected: 9345.00
-            }
-        }
-    ];
 
     MILISECONDS_TIMER = 5000;
 
     constructor(props){
         super(props);
-        this.state = {actualCarousel :0};
+        this.state = {projects: [],actualCarousel :0};
     }
 
 
-    componentDidMount(){
+    async componentDidMount(){
         let intervalId = global.setInterval(this.spinCarousel, this.MILISECONDS_TIMER);
+        const projects: Array<Project> = await ProjectFactory.getProjectsCarousel();
         // store intervalId in the state so it can be accessed later:
-        this.setState({spinCarouselInterval: intervalId});
+        this.setState({spinCarouselInterval: intervalId, projects});
     }
      
     componentWillUnmount(){
@@ -137,8 +35,8 @@ export default class Carousel extends React.Component<{},IStateCarousel>{
 
     spinCarousel = ()=>{
         //V1
-        const { actualCarousel } = this.state;
-        const newCarousel : number = actualCarousel >= (this.PROJECT_CAROUSEL.length -1)
+        const { actualCarousel, projects } = this.state;
+        const newCarousel : number = actualCarousel >= (projects.length -1)
             ? 0
             : actualCarousel + 1;
 
@@ -146,9 +44,9 @@ export default class Carousel extends React.Component<{},IStateCarousel>{
     }
 
     buildProjectCarousel(){
-        const { actualCarousel } = this.state;
+        const { actualCarousel, projects } = this.state;
 
-        return this.PROJECT_CAROUSEL.map((crsl:Project, i:number)=>{
+        return projects.map((crsl:Project, i:number)=>{
 
             const aux = ((crsl.bag.collected) * 100) / crsl.bag.meta;
             const percent = ( aux > 100 )? 100 : aux ;
@@ -199,8 +97,8 @@ export default class Carousel extends React.Component<{},IStateCarousel>{
     } 
 
     buildControls = ()=>{
-        const { actualCarousel } = this.state; 
-        return this.PROJECT_CAROUSEL.map((crsl:Project, i:number)=>{
+        const { actualCarousel, projects } = this.state; 
+        return projects.map((crsl:Project, i:number)=>{
             return <li 
                         key={i}
                         className={`positionControl ${ actualCarousel == i ? 'selected' : ''}` }

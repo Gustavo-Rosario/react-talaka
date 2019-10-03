@@ -1,3 +1,5 @@
+import { Project } from "models/Project";
+
 export interface IPropHeader{
     title: String
 }
@@ -25,6 +27,12 @@ export interface IPropProgressRing{
 }
 
 export interface IStateCarousel{
+    projects: Array<Project>
     actualCarousel: number, 
     spinCarouselInterval?: NodeJS.Timeout
+}
+
+
+export interface IStateMainProjetcs{
+    projects: Array<Project>
 }
