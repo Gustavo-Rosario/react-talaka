@@ -1,0 +1,71 @@
+@import '../../../styles/mixins.scss';
+
+.loader{
+    perspective: 100px;
+    position: relative;
+    width: 100%;
+
+    .book {
+        margin: 5% auto 30px;
+        box-sizing: border-box;
+        border: 4px solid $purpleDark;
+        width: 7rem;
+        height: 5.35rem;
+        position: relative;
+        transform-style: preserve-3d;
+        transform: rotateX(45deg);
+        box-shadow: 5px 5px 5px #4d077c;
+
+        .page {
+            display: block;
+            width: 3rem;
+            height: 4.6rem;
+            border: 4px solid $purpleDark;
+            border-left: 1px solid transparent;
+            margin: 0;
+            position: absolute;
+            right: -4px;
+            top: -4px;
+            overflow: hidden;
+            background: transparent;
+            transform-style: preserve-3d;
+            -webkit-transform-origin: left center;
+            transform-origin: left center;
+            
+            &:nth-child(1) {
+                animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.6s infinite;
+            }
+
+            &:nth-child(2) {
+                animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.4s infinite;
+            }
+
+            &:nth-child(3) {
+                animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.2s infinite;
+            }
+
+            &:nth-child(4) {
+                animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1s infinite;
+            }
+            
+        }
+    }
+    
+}
+
+@keyframes pageTurn {
+    0% {
+        transform: rotateY( 0deg);
+    }
+    20% {
+        background: #b08fd1;
+    }
+    40% {
+        background: transparent;
+        transform: rotateY( -180deg);
+    }
+    100% {
+        background: transparent;
+        transform: rotateY( -180deg);
+    }
+}

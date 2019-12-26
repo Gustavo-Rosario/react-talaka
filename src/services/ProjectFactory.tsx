@@ -136,7 +136,8 @@ export default class ProjectFactory extends BaseFactory{
                 bag: {
                     meta: 3000.00,
                     collected: 730.00
-                }
+                },
+                category: 'shonen'
             },
             {
                 title: 'Mayara & Annabelle',
@@ -160,7 +161,8 @@ export default class ProjectFactory extends BaseFactory{
                 bag: {
                     meta: 5000.00,
                     collected: 3848.00
-                }
+                },
+                category: 'sobrenatural'
             },
             {
                 title: 'Dragon Ball Super',
@@ -185,7 +187,8 @@ export default class ProjectFactory extends BaseFactory{
                 bag: {
                     meta: 2000.00,
                     collected: 1500.00
-                }
+                },
+                category: 'shonen'
             },
             {
                 title: 'Boku no Hero',
@@ -210,7 +213,8 @@ export default class ProjectFactory extends BaseFactory{
                 bag: {
                     meta: 2000.00,
                     collected: 500.00
-                }
+                },
+                category: 'shonen'
             },
             {
                 title: 'Ashe: Mãe Guerreira edição especial #01',
@@ -236,7 +240,8 @@ export default class ProjectFactory extends BaseFactory{
                 bag: {
                     meta: 12000.00,
                     collected: 9345.00
-                }
+                },
+                category: 'jogos'
             },{
                 title: '9 Horas',
                 description: `"9 Horas (9時間) é um álbum de história em quadrinhos
@@ -264,7 +269,8 @@ export default class ProjectFactory extends BaseFactory{
                 bag: {
                     meta: 12000.00,
                     collected: 9345.00
-                }
+                },
+                category: 'aventura'
             }
         ];
     }

@@ -9,11 +9,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faCommentDots, faPlusSquare, faUser, faTag } from '@fortawesome/free-solid-svg-icons';
 import { relative } from 'path';
 import ProjectFactory from '../../services/ProjectFactory';
+import BookLoader from '../../components/utils/BookLoader';
 
 export default class MainProjects extends React.Component<{}, IStateMainProjetcs>{
   
     state = {
-        projects: []
+        projects: [],
+        loading: false
     }
 
     async componentDidMount(){
@@ -21,6 +23,21 @@ export default class MainProjects extends React.Component<{}, IStateMainProjetcs
         this.setState({ projects })
     }
 
+    // Area de Exploracao
+    async changeProject(method){ 
+
+        this.setState({ loading: true });
+        
+        const a = await (async ()=>{
+            return global.setTimeout( ()=>Promise.resolve(2),5000) 
+        })();
+
+        this.setState({ loading: false });
+        // let projectsArea = [].slice.call(document.querySelectorAll("#listProjects .eachProject"));
+        // $("#listProjects").html('<section class="loader"><div class="book"><figure class="page"></figure><figure class="page"></figure><figure class="page"></figure></div></section>');
+        // let server = document.URL;
+    }
+    
 
     listProjects(){
         const { projects } = this.state;
@@ -37,7 +54,7 @@ export default class MainProjects extends React.Component<{}, IStateMainProjetcs
                     <div className="eachProjectInfo">
                         <div className="eachProjectTag">
                             <a href="/explore/<?= urlencode($proj->category);?>/1">
-                                <FontAwesomeIcon icon={faTag}/><span> oi{ /*proj.category */} </span>
+                                <FontAwesomeIcon icon={faTag}/><span> { proj.category } </span>
                             </a>
                             <h2>{ proj.title }</h2>
                             <p className="description">
@@ -61,11 +78,12 @@ export default class MainProjects extends React.Component<{}, IStateMainProjetcs
     }
 
     render(){
+        const { loading } = this.state;
         return(
             <section id="indexProjects">
                 <div className="wrapper">
                     <ul id="pTypes">
-                        <li data-type="pop">
+                        <li data-type="pop" onClick={()=> this.changeProject(1)}>
                             <FontAwesomeIcon icon={faStar} /> Projetos populares
                         </li>
                         <li data-type="cmt">
@@ -84,10 +102,9 @@ export default class MainProjects extends React.Component<{}, IStateMainProjetcs
                         <?php } ?>     */}
                         <li id="seeAll"><a href="/explore">Ver todos</a></li>
                     </ul>
-
                     <div id="listProjects">
 
-                        { this.listProjects() }
+                        { loading ? <BookLoader/> : this.listProjects() }
                         
                     </div>
                 </div>

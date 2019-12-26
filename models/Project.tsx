@@ -4,6 +4,7 @@ export class Project{
     title: String;
     description: String;
     creator: User;
+    category?: string;
     coauthor?: [User]
     bag: {
         meta: number;

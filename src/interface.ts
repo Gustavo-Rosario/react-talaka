@@ -35,4 +35,5 @@ export interface IStateCarousel{
 
 export interface IStateMainProjetcs{
     projects: Array<Project>
+    loading?: boolean
 }
