@@ -1,6 +1,6 @@
 export default class User{
-    name: String;
-    username: String;
+    name: string;
+    username: string;
     image?: {
         profile: string
         cover?:  string

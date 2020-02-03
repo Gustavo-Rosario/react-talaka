@@ -1433,9 +1433,9 @@ section#results {
 }
 
 // PAGINA DE PROJETO
-#headerProject {
+.headerProject {
     width: 100%;
-    height: 125px;
+    height: 125px !important;
     background-color: $blueDark;
     filter: brightness(75%) blur(3px);
     background-size: cover;
@@ -1515,7 +1515,8 @@ section#infosProject {
                 width: 40%;
                 max-width: 300px;
                 min-width: 280px;
-                height: 325px;
+                //height: 325px;
+                //max-height: 700px;
                 left: 60px;
                 position: absolute;
                 top: -100px;
@@ -1542,6 +1543,9 @@ section#infosProject {
                 }
                 .ww {
                     width: 100% !important;
+                }
+                img{
+                    width: 100%;
                 }
             }
         }
@@ -4254,5 +4258,17 @@ circle {
     }
     .block {
 
+    }
+}
+
+a.eachProject{ text-decoration: none; color: inherit }
+
+.cover{
+    width: 100%;
+    height: 100%;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 }

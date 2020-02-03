@@ -2,6 +2,7 @@ import * as React from 'react'
 import { IPropItemList } from '../../interface';
 import ItemList from '../utils/ItemList';
 import * as ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
 
 
 export default class Menu extends React.Component<{},{}> {
@@ -29,9 +30,9 @@ export default class Menu extends React.Component<{},{}> {
                             </ul>
                         </div>
 
-                        <div className="siteNav-middle">
-                            <h1 >talaka</h1>
-                        </div>
+                        <Link to="/" className="siteNav-middle">
+                            <h1>Talaka</h1>
+                        </Link>
 
                         <div className="siteNav-right">
                             

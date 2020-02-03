@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { relative } from 'path';
 import ProjectFactory from '../../services/ProjectFactory';
+import { Link } from 'react-router-dom';
 
 export default class Carousel extends React.Component<{},IStateCarousel>{
 
@@ -58,7 +59,7 @@ export default class Carousel extends React.Component<{},IStateCarousel>{
                     <div className="wrapper">
                         <div className="carouselLeft">
                             <Image className="headerProjectCover" path={crsl.image.main}/>
-                            {/* <a href=""> <i className="fa fa-heart-o" aria-hidden="true"></i> Conheça o projeto </a> */}
+                            {/*<Link to={`/project/${crsl.id}`}> <i className="fa fa-heart-o" aria-hidden="true"></i> Conheça o projeto </Link> */}
                         </div>
                         <div className="carouselRight">
                             <h1>{crsl.title}</h1>

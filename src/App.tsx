@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Home from './pages/Home/Home';
+import Home from './pages/Home/index';
+import ProjectPage from './pages/Project/index';
 
 export default class App extends React.Component<{},{}>{
     render(){
         return (
-            <BrowserRouter>
-                <Switch>
-                    <Route path="/" exact={true} component={Home} />
-                </Switch>
-            </BrowserRouter>
+            <Switch>
+                <Route path='/' exact component={Home} />
+                <Route path='/project/:id' component={ProjectPage} />
+            </Switch>
         );
     }
 }

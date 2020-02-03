@@ -1,11 +1,11 @@
 import { Project } from "models/Project";
 
 export interface IPropHeader{
-    title: String
+    title: string
 }
 
 export interface IPropItemList{
-    label: String
+    label: string
     link?: string
     external?: Boolean
 }
@@ -15,7 +15,8 @@ export interface IPropImage{
     alt?: string,
     description?: string,
     className?: string,
-    imgClass?: string
+    imgClass?: string,
+    id?: string
 }
 
 export interface IPropProgressRing{
@@ -24,6 +25,10 @@ export interface IPropProgressRing{
     progress: number,
     color?: string,
     inline?: boolean
+}
+
+export interface IPropPage{
+    title?: string
 }
 
 export interface IStateCarousel{

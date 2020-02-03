@@ -10,6 +10,8 @@ import { faStar, faCommentDots, faPlusSquare, faUser, faTag } from '@fortawesome
 import { relative } from 'path';
 import ProjectFactory from '../../services/ProjectFactory';
 import BookLoader from '../../components/utils/BookLoader';
+import { Link } from 'react-router-dom';
+import { date } from '../../utils';
 
 export default class MainProjects extends React.Component<{}, IStateMainProjetcs>{
   
@@ -45,7 +47,7 @@ export default class MainProjects extends React.Component<{}, IStateMainProjetcs
             const aux = ((proj.bag.collected) * 100) / proj.bag.meta;
             const percent = ( aux > 100 )? 100 : aux;
             return (
-                <div key={i} className="eachProject" onClick={()=>{}}>
+                <Link key={i} className="eachProject" to={`/project/${proj.id}`}>
                     <div className="eachProjectCover">
                         {/* BACKGROUND */}
                         <Image className="cover" path={proj.image.main}/>
@@ -68,12 +70,12 @@ export default class MainProjects extends React.Component<{}, IStateMainProjetcs
                                 </div>
                                 <ul>
                                     <li>{ Math.ceil(aux)}%</li>
-                                    <li>Aberto até <span></span></li>
+                                    <li>Aberto até { date(proj.end) }<span></span></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                </div>);
+                </Link>);
         });
     }
 

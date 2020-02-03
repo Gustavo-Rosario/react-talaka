@@ -6,8 +6,9 @@ module.exports = {
         extensions: ['.ts', '.tsx', '.js', '.css']
     },
     output: {
-        path: path.join(__dirname, '/dist'),
-        filename: 'bundle.min.js'
+        filename: 'bundle.min.js',
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: 'http://localhost:8080/'
     },
     module: {
         rules: [
@@ -30,5 +31,9 @@ module.exports = {
             template: './src/index.html',
             favicon: './src/assets/favicon.ico'
         })
-    ]
+    ],
+    devServer: {
+        historyApiFallback: true
+    },
+    devtool: 'source-map'
 }
